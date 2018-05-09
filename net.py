@@ -35,34 +35,15 @@ def get_rate(func):
         net_out.setdefault(key, (now_sent.get(key) - old_sent.get(key)) / 1024)
 
     return key_info, net_in, net_out
-def post(url, datas=None):
-    response = requests.post(url, data=datas)
-    json = response.json()
-    return json
 
-url = 'http://localhost:18088/write?db=test'
 while 1:
     try:
          key_info, net_in, net_out = get_rate(get_key)
-
-
-
          for key in key_info:
              data = [{key:[str(net_in.get(key)),str(net_out.get(key))]}]
-
-             json_data = json.dumps(data)
-             print(json_data)
-             from influxdb import InfluxDBClient
-             client = InfluxDBClient('127.0.0.1', 18088, 'root', '', 'test')
-             client.write_points(json_data)
-             result = client.query('select value from lo0;')
-             print("Result: {0}".format(result))
-             #print('%s\nInput:\t %-5sKB/s\nOutput:\t %-5sKB/s\n' % (key, net_in.get(key), net_out.get(key)))
-
+             print(data)
     except KeyboardInterrupt:
         exit()
 
-from influxdb import InfluxDBClient
-client = InfluxDBClient('127.0.0.1', 18088, 'root', '', 'test')
-client.write_points(json_body)
+
 
