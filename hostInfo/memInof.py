@@ -11,7 +11,7 @@ def getMemInfo():
 
 
 def getMemTotal():
-    mem_total_tmp = round(getMemInfo().total / 1024 / 1024 / 1024)
+    mem_total_tmp = round(getMemInfo().total / 1024 / 1024)
     mem_total = [
         {
             "measurement": "mem_total_short",
@@ -21,7 +21,7 @@ def getMemTotal():
                 },
             "fields":
                 {
-                    "value": mem_total_tmp,
+                    "value":mem_total_tmp,
                     "success": 1,
                 }
         }
@@ -30,10 +30,10 @@ def getMemTotal():
 
 
 def getMemUsed():
-    mem_used_tmp = round(getMemInfo().used / 1024 / 1024 / 1024)
+    mem_used_tmp = round(getMemInfo().used / 1024 / 1024)
     mem_used = [
         {
-            "measurement": "mem_used_hort",
+            "measurement": "mem_used_short",
             "tags":
                 {
                     "host": "server01"
@@ -48,7 +48,7 @@ def getMemUsed():
     return mem_used
 
 def getMemLoad():
-    mem_load_tmp = round(round(getMemInfo().used / 1024 / 1024 / 1024) / round(getMemInfo().total / 1024 / 1024 / 1024) * 100)
+    mem_load_tmp = round(round(getMemInfo().used) / round(getMemInfo().total) * 100)
     mem_load = [
         {
             "measurement": "mem_load_short",

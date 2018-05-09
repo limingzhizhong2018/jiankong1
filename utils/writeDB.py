@@ -2,7 +2,7 @@ from influxdb import InfluxDBClient
 from hostInfo import cpu, memInof, NetRate
 from influxdb.exceptions import InfluxDBClientError, InfluxDBServerError
 def get_db_connection():
-    db_conn = InfluxDBClient('127.0.0.1', 8086, 'root', '', 'test2')
+    db_conn = InfluxDBClient('127.0.0.1', 8086, 'root', '', 'test3')
     return db_conn
 def write():
     db_conn = get_db_connection()

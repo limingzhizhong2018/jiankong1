@@ -1,8 +1,5 @@
 import psutil
-import datetime
-from utils import db
-from Entiers import SystemInfo
-from influxdb.exceptions import InfluxDBClientError, InfluxDBServerError
+
 
 
 def get_key():
@@ -21,7 +18,6 @@ def get_key():
 def get_rate(func):
 
     import time
-
     key_info, old_recv, old_sent = func()
 
     time.sleep(1)
@@ -37,10 +33,12 @@ def get_rate(func):
 
     return key_info, net_in, net_out
 
-key_info, net_in, net_out = get_rate(get_key)
-data_net_out = []
-data_net_in =[]
+
+
+
 def getNetRx():
+    key_info, net_in, net_out = get_rate(get_key)
+    data_net_in = []
     for key in key_info:
         netRx = [
             {
@@ -60,6 +58,8 @@ def getNetRx():
         data_net_in.append(netRx)
     return data_net_in
 def getNetTx():
+    key_info, net_in, net_out = get_rate(get_key)
+    data_net_out = []
     for key in key_info:
         netTx = [
             {
