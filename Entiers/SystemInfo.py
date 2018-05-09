@@ -29,17 +29,3 @@ class SystemInfo(object):
                      }
             }
         ]
-        self. mem_total = [
-        {
-            "measurement": "mem_total_short",
-            "tags":
-                {
-                    "host": "server01"
-                },
-            "fields":
-                {
-                    "value": memTotal,
-                    "success": 1,
-                }
-        }
-       ]
