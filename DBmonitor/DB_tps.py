@@ -2,24 +2,21 @@
 
 # _*_ coding:utf-8 _*_
 
-import MySQLdb
-
-import datetime
-
-import json
-
-# qps
-
 import time
 
+import MySQLdb
 from influxdb import InfluxDBClient
+
+# qps
 
 # import influxdb
 
 try:
 
     conn = MySQLdb.connect(host="192.168.15.104", user="root", passwd="person", port=3306)
-    client = InfluxDBClient(host=‘192.168.15.104‘, port = 8086, username ="root", password ="", database =‘telegraf‘)
+    client = InfluxDBClient(host=‘192.168
+    .15
+    .104‘, port = 8086, username = "root", password = "", database =‘telegraf‘)
 
     cur = conn.cursor()
 
@@ -86,27 +83,25 @@ try:
 
 json_body = [
 
-        {
+    {
 
-            "measurement":my_tps,
+        "measurement": my_tps,
 
-            "tags": {
+        "tags": {
 
-                     "host": "mycat"
+            "host": "mycat"
 
-                    },
-            "fields": {
+        },
+        "fields": {
 
-                 "influxdb": "qps1",
+            "influxdb": "qps1",
 
-                 "qps": aa
-
-                }
+            "qps": aa
 
         }
+
+    }
 ]
-
-
 
 # aa ="query_per_sec  host=mycat,role=db,influxdb=qps qps=%d "% (commit/uptime)
 
@@ -133,7 +128,7 @@ json_body = [
 
         "measurement": ‘my_tps‘,  ###注意这个红色位置不能用双引号，估计是PYTHON的问题，JAVA用双引号没问题，是个坑哦~~~！这个可以设置你喜欢的，其他不要修改，直接使用
 
-        "tags": {
+"tags": {
 
     "host": "mycat"
 
