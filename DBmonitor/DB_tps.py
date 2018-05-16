@@ -14,9 +14,7 @@ from influxdb import InfluxDBClient
 try:
 
     conn = MySQLdb.connect(host="192.168.15.104", user="root", passwd="person", port=3306)
-    client = InfluxDBClient(host=‘192.168
-    .15
-    .104‘, port = 8086, username = "root", password = "", database =‘telegraf‘)
+    client = InfluxDBClient(host='192.168.15.104', port = 8086, username = "root", password = "", database ='telegraf')
 
     cur = conn.cursor()
 
@@ -50,7 +48,7 @@ try:
         time.sleep(1)
 
         while True:
-            sql = ‘‘‘show
+            sql = show
             global status
             where
             variable_name in (‘com_select‘, ‘com_insert‘, ‘com_delete‘, ‘com_update‘, ‘com_insert_select‘, ‘uptime‘)‘‘‘
@@ -115,9 +113,7 @@ client.write_points(json_body)
 break
 
 except MySQLdb.Error, e:
-
-print
-"MySQL error%d:%s" % (e.args[0], e.args[1])
+    print("MySQL error%d:%s" % (e.args[0], e.args[1]))
 
 ##脚本需要注意4个地方：1、连接数据库的信息，是被监控端的
 
